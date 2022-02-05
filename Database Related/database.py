@@ -7,7 +7,7 @@ engine = create_engine('postgresql://@localhost:5432/Test')
 
 # Load dataframe
 def dataframe():
-    comments_df = pd.read_pickle("../Sentiment Analysis/comments_with_textblob_df.pkl")
+    comments_df = pd.read_pickle("../Sentiment Analysis/comments_with_textblob_dvader_df.pkl")
     return comments_df
 
 
