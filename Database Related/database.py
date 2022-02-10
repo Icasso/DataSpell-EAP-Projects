@@ -1,19 +1,20 @@
-import psycopg2
 import pandas as pd
 from sqlalchemy import create_engine
 
 engine = create_engine('postgresql://@localhost:5432/Test')
+azure_engine = create_engine('postgresql://tsuihoiming:Qw645987321@fyp-psql.postgres.database.azure.com/Development'
+                             '?sslmode=require')
 
 
 # Load dataframe
 def dataframe():
-    comments_df = pd.read_pickle("../Sentiment Analysis/comments_with_textblob_dvader_df.pkl")
-    return comments_df
+    df = pd.read_pickle("../Pickles/list.pkl")
+    return df
 
 
 if __name__ == '__main__':
-    df = dataframe()
+    res_df = dataframe()
     # df = df.head()
-    df.to_sql('data', engine, if_exists='replace')
+    res_df.to_sql('reddit_community_distribution', azure_engine, if_exists='replace')
     print("Process completed")
-#%%
+# %%
